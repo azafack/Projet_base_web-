@@ -1,0 +1,29 @@
+/* Tablette (à partir de 600 px) : cartes sur 2 colonnes */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Ordinateur (à partir de 900 px) : menu horizontal, 3 colonnes */
+@media (min-width: 900px) {
+  /* On cache le burger */
+  .nav-toggle {
+    display: none;
+  }
+  /* Le menu est toujours visible, aligné à droite */
+  .main-nav {
+    display: block;
+    width: auto;
+  }
+  .main-nav ul {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,230 @@
+:root{
+    background: #121212;
+    --card: #1e1e1e;
+    --accent: #ff6b1a;
+    --accent-2:#FFC247;
+    --text:#F5F5F5;
+    --text-soft:#B3B3B3;
+    --radius:12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --font-titre: "Oswald", Impact, "Arial Narrow", sans-serif;
+    --font-texte: "Roboto", "Segoe UI", Arial, sans-serif;
+    --voile-haut: rgba(0, 0, 0, 0.20);      /* opacité en haut de la bannière */
+    --voile-bas: rgba(18, 18, 18, 0.45);    /* opacité en bas */
+}
+/* ========== BASE ==========
+   box-sizing: border-box : la largeur inclut padding et bordure (calculs plus simples). */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* margin: 0 enlève les marges par défaut du navigateur */
+body {
+  margin: 0;
+  font-family: var(--font-texte);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+h1, h2, h3 {
+  font-family: var(--font-titre);
+  line-height: 1.2;
+}
+a {
+  color: var(--accent);
+}
+/* Classe utilitaire : cache visuellement un texte mais le garde pour les lecteurs d'écran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+/* Contenu principal : largeur limitée et centrée */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+/* ========== HEADER ==========
+   sticky : l'en-tête reste collé en haut pendant le défilement.
+   z-index élevé pour rester au-dessus du contenu. */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;                  /* logo à gauche, burger à droite */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;                /* le menu passe sous le logo sur mobile */
+  padding: 0.75rem 1rem;
+  background: rgba(18, 18, 18, 0.95);
+  border-bottom: 2px solid var(--accent);
+}
+.logo {
+  font-family: var(--font-titre);
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+/* Bouton burger : visible par défaut (mobile), masqué sur grand écran (responsive.css) */
+.nav-toggle {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-size: 1.5rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+/* Menu : caché sur mobile, affiché quand le JS ajoute la classe "open" */
+.main-nav {
+  display: none;
+  width: 100%;
+}
+.main-nav.open {
+  display: block;
+}
+
+.main-nav ul,
+footer ul {
+  list-style: none;   /* retire les puces */
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  display: block;
+  padding: 0.6rem 0;
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Effet au survol, et page active (grâce à aria-current="page" dans le HTML) */
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.hero {
+  position: relative;          /* obligatoire : les images se placent par rapport à la bannière */
+  min-height: 80vh;            /* hauteur de la bannière */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1E1E1E, #3a1a05);
+}
+
+.hero-slides {
+  position: absolute;          /* occupe toute la bannière */
+  inset: 0;
+}
+
+.hero-slides::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--voile-haut), var(--voile-bas));
+}
+
+.hero-slide {
+  position: absolute;          /* sans cette ligne, les div ont une hauteur de 0 : rien ne s'affiche */
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.5s ease-in-out, transform 7s ease-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.slide-1 { background-image: url("../img/hero1.jpg"); }
+.slide-2 { background-image: url("../img/hero2.jpg"); }
+.slide-3 { background-image: url("../img/hero3.jpg"); }
+.slide-4 { background-image: url("../img/hero4.jpg"); }
+
+.hero-content {
+  position: relative;
+  z-index: 1;                  /* le texte passe au-dessus des images */
+  padding: 1rem;
+  max-width: 700px;
+}
+
+.hero-content h1,
+.hero-content p {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);   /* contour sombre diffus derrière les lettres */
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  margin: 0 0 1rem;
+}
+
+/* ========== BOUTON ========== */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background: var(--accent);
+  color: #121212;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: transform 0.2s, background 0.2s;
+}
+.btn:hover {
+  background: var(--accent-2);
+  transform: scale(1.05);
+}
+
+/* ========== CARTES ========== */
+/* Grille : 1 colonne sur mobile, plus de colonnes dans responsive.css */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);   /* la carte se soulève au survol */
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--card);
+  border-top: 2px solid var(--accent);
+  color: var(--text-soft);
+}
+footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ========== ACCESSIBILITÉ ========== */
+/* Si l'utilisateur a désactivé les animations, on les coupe (zoom et transitions) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide, .btn, .card {
+    transition: none;
+  }
+  .hero-slide.active {
+    transform: none;
+  }
+}

@@ -6,8 +6,11 @@
     <meta name="description" content="FiTZone : programme d'entrainement et planning pour se mettre au sport">
     <title>FiTZone - Accueil</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
+    <script src="js/carrousel.js" defer></script>
 </head>
+
 <body>
     <header>
         <a class="logo" href="index.html">FiTZone</a>
@@ -25,13 +28,26 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero" aria-labelledby="titre-accueil">
-            <h1 id="titre-accueil">Bouge.Progresse.Recommence</h1>
-            <p>Des programmes clairs, des outils simples et un planning prêt à l'emploi.</p>
-            <a  class="btn" href="pages/programmes.html">Voir les Programmes</a>
-        </section>
 
+    <section class="hero" aria-labelledby="titre-accueil">
+
+        <!-- Les 4 images de fond, empilées les unes sur les autres -->
+        <div class="hero-slides" aria-hidden="true">
+            <div class="hero-slide slide-1 active"></div>
+            <div class="hero-slide slide-2"></div>
+            <div class="hero-slide slide-3"></div>
+            <div class="hero-slide slide-4"></div>
+        </div>
+
+        <!-- Le texte, au-dessus des images -->
+        <div class="hero-content">
+            <h1 id="titre-accueil">Bouge. Progresse. Recommence.</h1>
+            <p>Des programmes clairs, des outils simples et un planning prêt à l'emploi.</p>
+            <a class="btn" href="pages/programmes.html">Voir les programmes</a>
+        </div>
+    </section>
+
+    <main>
         <section aria-labelledby="titre-atouts">
             <h2 id="titre-atouts">Pourquoi FiTZone ?</h2>
 
@@ -51,6 +67,7 @@
             </div>
         </section>
     </main>
+    
     <footer class="site-footer">
         <nav aria-label="Navigation du pied de page">
             <ul>
