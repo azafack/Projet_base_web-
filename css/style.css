@@ -228,3 +228,15 @@ footer ul {
     transform: none;
   }
 }
+/* État de départ : carte invisible et légèrement décalée vers le bas */
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+/* Quand le JS ajoute la classe "visible", la carte apparaît */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
