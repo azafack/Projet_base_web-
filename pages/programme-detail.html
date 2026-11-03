@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le détail des programmes FitZone : séances, exercices, séries et répétitions.">
+    <title>FitZone - Détail des programmes</title>
+    <!-- CSS : commun, responsive commun, puis celui de la page (dans cet ordre) -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/programme-detail.css">
+    <script src="../js/main.js" defer></script>
+    <!-- Affiche seulement le programme choisi (celui indiqué après le # dans l'adresse) -->
+    <script src="../js/programme-detail.js" defer></script>
+</head>
+<body>
+    <header>
+        <a class="logo" href="../index.html">FitZone</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+            <span class="sr-only">Menu</span>☰
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <!-- Cette page est une sous-page de Programmes : on marque "Programmes" comme page active -->
+                <li><a href="programmes.html" aria-current="page">Programmes</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Lien de retour vers la page parente (niveau 1 de l'arborescence) -->
+        <p><a href="programmes.html">← Retour aux programmes</a></p>
+
+        <h1>Le détail des programmes</h1>
+        <p>Pour chaque programme : les séances de la semaine, les exercices, le nombre de séries et de répétitions, et le temps de repos.</p>
+
+        <!-- Sommaire : chaque lien change le programme affiché (grâce à son id après le #) -->
+        <nav class="sommaire" aria-label="Sommaire des programmes">
+            <ul>
+                <li><a href="#remise-en-forme">Remise en forme</a></li>
+                <li><a href="#cardio-decouverte">Cardio découverte</a></li>
+                <li><a href="#perte-de-poids">Perte de poids</a></li>
+                <li><a href="#prise-de-masse">Prise de masse</a></li>
+            </ul>
+        </nav>
+
+        <!-- Une section par programme. L'id est la cible des liens "Voir le programme"
+             de la page Programmes (ex. programme-detail.html#remise-en-forme). -->
+        <section id="remise-en-forme" class="programme" aria-labelledby="titre-remise">
+            <h2 id="titre-remise">Remise en forme</h2>
+            <!-- Petites étiquettes qui résument le programme -->
+            <ul class="infos">
+                <li>Niveau : débutant</li>
+                <li>3 séances par semaine</li>
+                <li>30 min par séance</li>
+            </ul>
+            <p>Un programme pour reprendre le sport en douceur, sans matériel, à faire chez soi.</p>
+
+            <!-- div.table-scroll : sur mobile, le tableau défile horizontalement au lieu de déborder -->
+            <div class="table-scroll">
+                <table>
+                    <!-- caption : titre du tableau, lu par les lecteurs d'écran -->
+                    <caption>Séances du programme Remise en forme</caption>
+                    <!-- thead : ligne d'en-tête. scope="col" : la cellule est le titre de sa colonne -->
+                    <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Exercice</th>
+                            <th scope="col">Séries × répétitions</th>
+                            <th scope="col">Repos</th>
+                        </tr>
+                    </thead>
+                    <!-- tbody : le contenu du tableau, une ligne <tr> par exercice -->
+                    <tbody>
+                        <tr>
+                            <!-- rowspan="2" : la cellule "Lundi" couvre deux lignes -->
+                            <th scope="row" rowspan="2">Lundi</th>
+                            <td>Squats</td>
+                            <td>3 × 12</td>
+                            <td>60 s</td>
+                        </tr>
+                        <tr>
+                            <td>Pompes sur les genoux</td>
+                            <td>3 × 10</td>
+                            <td>60 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">Mercredi</th>
+                            <td>Fentes avant</td>
+                            <td>3 × 10 par jambe</td>
+                            <td>60 s</td>
+                        </tr>
+                        <tr>
+                            <td>Gainage</td>
+                            <td>3 × 30 s</td>
+                            <td>45 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">Vendredi</th>
+                            <td>Jumping jacks</td>
+                            <td>3 × 30 s</td>
+                            <td>45 s</td>
+                        </tr>
+                        <tr>
+                            <td>Pont fessier</td>
+                            <td>3 × 15</td>
+                            <td>60 s</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="cardio-decouverte" class="programme" aria-labelledby="titre-cardio">
+            <h2 id="titre-cardio">Cardio découverte</h2>
+            <ul class="infos">
+                <li>Niveau : débutant</li>
+                <li>3 séances par semaine</li>
+                <li>30 à 40 min par séance</li>
+            </ul>
+            <p>Améliorer son souffle et commencer à perdre du poids avec des efforts modérés.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <caption>Séances du programme Cardio découverte</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Exercice</th>
+                            <th scope="col">Durée ou séries</th>
+                            <th scope="col">Repos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">Lundi</th>
+                            <td>Marche rapide</td>
+                            <td>30 min</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Gainage</td>
+                            <td>3 × 30 s</td>
+                            <td>45 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mercredi</th>
+                            <td>Vélo (ou vélo d'appartement)</td>
+                            <td>35 min</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">Samedi</th>
+                            <td>Montées de genoux</td>
+                            <td>4 × 30 s</td>
+                            <td>30 s</td>
+                        </tr>
+                        <tr>
+                            <td>Marche rapide</td>
+                            <td>20 min</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="perte-de-poids" class="programme" aria-labelledby="titre-perte">
+            <h2 id="titre-perte">Perte de poids</h2>
+            <ul class="infos">
+                <li>Niveau : intermédiaire</li>
+                <li>4 séances par semaine</li>
+                <li>40 min par séance</li>
+            </ul>
+            <p>Un mélange de cardio et de renforcement musculaire pour brûler plus de calories.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <caption>Séances du programme Perte de poids</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Exercice</th>
+                            <th scope="col">Séries × répétitions</th>
+                            <th scope="col">Repos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">Lundi</th>
+                            <td>Burpees</td>
+                            <td>4 × 10</td>
+                            <td>45 s</td>
+                        </tr>
+                        <tr>
+                            <td>Squats sautés</td>
+                            <td>4 × 12</td>
+                            <td>45 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mardi</th>
+                            <td>Course à pied</td>
+                            <td>30 min</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">Jeudi</th>
+                            <td>Pompes</td>
+                            <td>4 × 12</td>
+                            <td>60 s</td>
+                        </tr>
+                        <tr>
+                            <td>Mountain climbers</td>
+                            <td>4 × 30 s</td>
+                            <td>30 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Samedi</th>
+                            <td>HIIT (effort / repos)</td>
+                            <td>8 × (40 s / 20 s)</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="prise-de-masse" class="programme" aria-labelledby="titre-masse">
+            <h2 id="titre-masse">Prise de masse</h2>
+            <ul class="infos">
+                <li>Niveau : intermédiaire</li>
+                <li>4 séances par semaine</li>
+                <li>45 min par séance</li>
+            </ul>
+            <p>Une musculation progressive : on augmente la charge petit à petit pour gagner en force et en volume.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <caption>Séances du programme Prise de masse</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Exercice</th>
+                            <th scope="col">Séries × répétitions</th>
+                            <th scope="col">Repos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">Lundi (haut du corps)</th>
+                            <td>Développé couché</td>
+                            <td>4 × 8</td>
+                            <td>90 s</td>
+                        </tr>
+                        <tr>
+                            <td>Rowing haltère</td>
+                            <td>4 × 10</td>
+                            <td>90 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">Mardi (bas du corps)</th>
+                            <td>Squat avec charge</td>
+                            <td>4 × 8</td>
+                            <td>2 min</td>
+                        </tr>
+                        <tr>
+                            <td>Soulevé de terre jambes tendues</td>
+                            <td>3 × 10</td>
+                            <td>90 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jeudi (épaules, bras)</th>
+                            <td>Développé militaire</td>
+                            <td>4 × 10</td>
+                            <td>90 s</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vendredi (corps entier)</th>
+                            <td>Tractions (ou tirage)</td>
+                            <td>4 × 6 à 8</td>
+                            <td>2 min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Conseil de sécurité, mis en avant avec la classe "conseil" -->
+        <aside class="conseil" aria-label="Conseil">
+            <p>Échauffe-toi 5 à 10 minutes avant chaque séance, et arrête l'exercice en cas de douleur.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <!-- Le pied de page doit contenir un lien vers « À propos » (exigence de l'énoncé) -->
+        <nav aria-label="Navigation du pied de page">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+            </ul>
+        </nav>
+        <p>© 2026 FitZone – Projet TI504N/TI504NB</p>
+    </footer>
+</body>
+</html>

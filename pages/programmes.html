@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Les Programmes d'entrainement FiTZone, a filter par objectif et par niveau.">
+    <title>FiTZone - Accueil</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/programmes.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/carrousel.js" defer></script>
+    <script src="../js/apparition.js" defer></script>
+    <script src="../js/filtres.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="index.html">FiTZone</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+            <span class="sr-only">Menu</span>☰
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="pages/programmes.html">Programmes</a></li>
+                <li><a href="pages/planning.html">Planning</a></li>
+                <li><a href="pages/outils.html">Outils</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+                <li><a href="pages/a-propos.html">A-Propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Nos Programmes</h1>
+        <p>Choisis un objectif et un niveau pour trouver le programme qui te correspond.</p>
+        <div class="filtres">
+            <label for="filtre-objectif">Objectif</label>
+            <select id="filtre-objectif">
+                <!-- value="tous" : valeur spéciale qui signifie "pas de filtre" -->
+                <option value="tous">Tous</option>
+                <option value="remise-en-forme">Remise en forme</option>
+                <option value="perte-de-poids">Perte de poids</option>
+                <option value="prise-de-masse">Prise de masse</option>
+            </select>
+
+            <label for="filtre-niveau">Niveau</label>
+            <select id="filtre-niveau">
+                <option value="tous">Tous</option>
+                <option value="debutant">Débutant</option>
+                <option value="intermediaire">Intermédiaire</option>
+            </select>
+        </div>
+        <p id="aucun-resultat" hidden>aucun programme</p>
+        <div class="grid">
+
+            <!-- data-objectif et data-niveau : des attributs "maison" que le JS lit pour filtrer -->
+            <section class="card" data-objectif="remise-en-forme" data-niveau="debutant">
+                <h2>Remise en forme</h2>
+                <p>3 séances par semaine pour reprendre en douceur.</p>
+                <p>Niveau : débutant</p>
+                <a href="programme-detail.html">Voir le programme</a>
+            </section>
+
+            <section class="card" data-objectif="perte-de-poids" data-niveau="debutant">
+                <h2>Cardio découverte</h2>
+                <p>Marche rapide, vélo et gainage, 3 séances par semaine.</p>
+                <p>Niveau : débutant</p>
+                <a href="programme-detail.html">Voir le programme</a>
+            </section>
+
+            <section class="card" data-objectif="perte-de-poids" data-niveau="intermediaire">
+                <h2>Perte de poids</h2>
+                <p>Cardio et renforcement, 4 séances par semaine.</p>
+                <p>Niveau : intermédiaire</p>
+                <a href="programme-detail.html">Voir le programme</a>
+            </section>
+
+            <section class="card" data-objectif="prise-de-masse" data-niveau="intermediaire">
+                <h2>Prise de masse</h2>
+                <p>Musculation progressive, 4 séances par semaine.</p>
+                <p>Niveau : intermédiaire</p>
+                <a href="programme-detail.html">Voir le programme</a>
+            </section>
+
+        </div>
+    </main>
+</body>
+<footer>
+    <p>© 2026 FitZone – Projet TI504N/TI504NB</p>
+</footer>
+
+</html>
