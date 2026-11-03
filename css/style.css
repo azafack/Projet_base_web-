@@ -163,8 +163,17 @@ footer ul {
   }
 }
 
+
 /* Sans cette règle, display: flex/grid pourrait ignorer l'attribut hidden
    (utilisé par les filtres de la page Programmes) */
 [hidden] {
   display: none !important;
+
+/* Quand le JS ajoute la classe "visible", la carte apparaît */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+}
+
+/* >>>>>>> 12c842d42887f29045efcc084fddd94f971b2bbb */
