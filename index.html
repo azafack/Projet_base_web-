@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FiTZone : programme d'entrainement et planning pour se mettre au sport">
-    <title>FiTZone - Accueil</title>
+    <meta name="description" content="FitZone : programmes d'entraînement, outils et planning pour se mettre au sport.">
+    <title>FitZone - Accueil</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- CSS propre à l'accueil : diaporama et apparition des cartes -->
+    <link rel="stylesheet" href="css/accueil.css">
     <script src="js/main.js" defer></script>
+    <script src="js/carrousel.js" defer></script>
+    <script src="js/apparition.js" defer></script>
 </head>
+
 <body>
     <header>
-        <a class="logo" href="index.html">FiTZone</a>
+        <a class="logo" href="index.html">FitZone</a>
         <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
             <span class="sr-only">Menu</span>☰
         </button>
         <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html" aria-current="page">Accueil</a></li>
                 <li><a href="pages/programmes.html">Programmes</a></li>
                 <li><a href="pages/planning.html">Planning</a></li>
                 <li><a href="pages/outils.html">Outils</a></li>
                 <li><a href="pages/contact.html">Contact</a></li>
-                <li><a href="pages/a-propos.html">A-Propos</a></li>
+                <li><a href="pages/a-propos.html">À propos</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero" aria-labelledby="titre-accueil">
-            <h1 id="titre-accueil">Bouge.Progresse.Recommence</h1>
-            <p>Des programmes clairs, des outils simples et un planning prêt à l'emploi.</p>
-            <a  class="btn" href="pages/programmes.html">Voir les Programmes</a>
-        </section>
 
+    <section class="hero" aria-labelledby="titre-accueil">
+
+        <!-- Les 4 images de fond, empilées les unes sur les autres -->
+        <div class="hero-slides" aria-hidden="true">
+            <div class="hero-slide slide-1 active"></div>
+            <div class="hero-slide slide-2"></div>
+            <div class="hero-slide slide-3"></div>
+            <div class="hero-slide slide-4"></div>
+        </div>
+
+        <!-- Le texte, au-dessus des images -->
+        <div class="hero-content">
+            <h1 id="titre-accueil">Bouge. Progresse. Recommence.</h1>
+            <p>Des programmes clairs, des outils simples et un planning prêt à l'emploi.</p>
+            <a class="btn" href="pages/programmes.html">Voir les programmes</a>
+        </div>
+    </section>
+
+    <main>
         <section aria-labelledby="titre-atouts">
-            <h2 id="titre-atouts">Pourquoi FiTZone ?</h2>
+            <h2 id="titre-atouts">Pourquoi FitZone ?</h2>
 
             <div class="grid">
                 <article class="card">
-                    <h3>Programmes adaptes</h3>
+                    <h3>Programmes adaptés</h3>
                     <p>Choisis selon ton objectif et ton niveau.</p>
                 </article>
                 <article class="card">
@@ -50,17 +69,33 @@
                 </article>
             </div>
         </section>
+        <section aria-labelledby="titre-populaires">
+            <h2 id="titre-populaires">Programmes populaires</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Remise en forme</h3>
+                    <p>3 séances par semaine, idéal pour débuter.</p>
+                    <a href="pages/programme-detail.html">Voir le programme</a>
+                </article>
+                <article class="card">
+                    <h3>Prise de masse</h3>
+                    <p>Musculation progressive pour gagner en force.</p>
+                    <a href="pages/programme-detail.html">Voir le programme</a>
+                </article>
+            </div>
+        </section>
     </main>
+
     <footer class="site-footer">
         <nav aria-label="Navigation du pied de page">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="pages/programmes.html">Programmes</a></li>
                 <li><a href="pages/contact.html">Contact</a></li>
-                <li><a href="pages/a-propos.html">A-Propos</a></li> 
+                <li><a href="pages/a-propos.html">À propos</a></li>
             </ul>
         </nav>
-        <p>© 2026 FitZone</p>
+        <p>© 2026 FitZone – Projet TI504N/TI504NB</p>
     </footer>
 
 </body>

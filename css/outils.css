@@ -1,0 +1,134 @@
+/* ==========================================================
+   outils.css : styles propres à la page Outils (outils.html)
+   Les styles communs à toutes les pages sont dans style.css.
+   ========================================================== */
+
+/* Conteneur des deux outils : 1 colonne par défaut (mobile) */
+.outils-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Bloc d'un outil : même look que les cartes, sans l'effet de survol */
+.bloc-outil {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ----- Champs de formulaire ----- */
+.champ {
+  margin-bottom: 1rem;
+}
+
+.champ label {
+  display: block;            /* le texte passe au-dessus du champ */
+  margin-bottom: 0.3rem;
+}
+
+.champ input,
+.champ select {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--text-soft);
+  border-radius: var(--radius);
+  font: inherit;             /* reprend la police du site */
+}
+
+/* Le champ actif est entouré en orange */
+.champ input:focus,
+.champ select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ----- Messages ----- */
+/* var(--error, #FF4D4D) : si la variable n'existe pas, on utilise la valeur après la virgule */
+.message-erreur {
+  color: var(--error, #FF4D4D);
+  font-weight: bold;
+}
+
+.resultat {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+.note {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+/* ----- Boutons : les <button> n'ont pas le même style que les liens <a> ----- */
+button.btn {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+}
+
+/* Bouton secondaire : contour orange, fond transparent */
+.btn.btn-secondaire {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--accent);
+}
+.btn.btn-secondaire:hover {
+  background: var(--accent);
+  color: #121212;
+}
+
+/* ----- Chronomètre ----- */
+.chrono-affichage {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: var(--bg);
+  border: 3px solid var(--text-soft);
+  border-radius: var(--radius);
+  transition: border-color 0.3s;   /* la couleur change en douceur */
+}
+
+/* Ces deux classes sont ajoutées par chrono.js selon la phase */
+.chrono-affichage.effort {
+  border-color: var(--accent);
+}
+.chrono-affichage.repos {
+  border-color: var(--ok, #3DDC84);
+}
+
+.chrono-phase {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chrono-temps {
+  margin: 0;
+  font-family: var(--font-titre);
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.boutons-chrono {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ----- Responsive propre à cette page : deux colonnes dès 900 px ----- */
+@media (min-width: 900px) {
+  .outils-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;   /* chaque bloc garde sa hauteur */
+  }
+}
+
