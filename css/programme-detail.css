@@ -1,0 +1,128 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== SOMMAIRE ========== */
+/* Les liens du sommaire sont affichés comme des "pastilles" côte à côte */
+.sommaire ul {
+  display: flex;
+  flex-wrap: wrap;          /* passent à la ligne sur petit écran */
+  gap: 0.75rem;
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.sommaire a {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sommaire a:hover,
+.sommaire a[aria-current="true"] {   /* programme affiché : pastille pleine (ajouté par le JS) */
+  background: var(--accent);
+  color: #121212;
+}
+
+/* ========== SECTIONS DES PROGRAMMES ========== */
+.programme {
+  background: var(--card);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);   /* barre orange à gauche */
+  /* Le header est "sticky" : sans cette marge, il cacherait le titre de la section ciblée */
+  scroll-margin-top: 5rem;
+}
+
+/* Section ciblée par l'adresse (#prise-de-masse...) : mise en évidence en jaune */
+.programme:target {
+  border-left-color: var(--accent-2);
+}
+
+.programme h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+/* Étiquettes d'information (niveau, nombre de séances, durée) */
+.infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.infos li {
+  padding: 0.2rem 0.8rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+/* ========== TABLEAUX DES SÉANCES ========== */
+/* Conteneur : si le tableau est plus large que l'écran, il défile horizontalement */
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;   /* fusionne les bordures des cellules */
+  min-width: 480px;            /* en dessous, on défile plutôt que d'écraser les colonnes */
+}
+
+caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+  color: var(--text-soft);
+  font-style: italic;
+}
+
+th,
+td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+/* Ligne d'en-tête : fond orange, texte foncé */
+thead th {
+  background: var(--accent);
+  color: #121212;
+}
+
+/* Cellules "Jour" (th dans le tbody) */
+tbody th {
+  color: var(--accent-2);
+  vertical-align: top;
+}
+
+/* Survol d'une ligne : léger éclaircissement pour suivre la ligne */
+tbody tr:hover {
+  background: rgba(255, 107, 26, 0.08);
+}
+
+/* ========== CONSEIL ========== */
+.conseil {
+  padding: 1rem 1.5rem;
+  border: 1px dashed var(--accent-2);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+}
+
+/* ========== ACCESSIBILITÉ ========== */
+/* Animations désactivées par l'utilisateur : pas de défilement animé */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
