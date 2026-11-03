@@ -1,0 +1,110 @@
+/* ==========================================================
+   accueil.css : styles propres à la page d'accueil (index.html)
+   Les styles communs à toutes les pages sont dans style.css.
+   ========================================================== */
+
+/* Opacité du voile sombre posé sur les images du diaporama */
+:root {
+    --voile-haut: rgba(0, 0, 0, 0.20);      /* opacité en haut de la bannière */
+    --voile-bas: rgba(18, 18, 18, 0.45);    /* opacité en bas */
+}
+
+/* ========== BANNIÈRE : DIAPORAMA EN FOND ========== */
+.hero {
+  position: relative;          /* obligatoire : les images se placent par rapport à la bannière */
+  min-height: 80vh;            /* hauteur de la bannière */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1E1E1E, #3a1a05);
+}
+
+.hero-slides {
+  position: absolute;          /* occupe toute la bannière */
+  inset: 0;
+}
+
+.hero-slides::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--voile-haut), var(--voile-bas));
+}
+
+.hero-slide {
+  position: absolute;          /* sans cette ligne, les div ont une hauteur de 0 : rien ne s'affiche */
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.5s ease-in-out, transform 7s ease-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.slide-1 { background-image: url("../img/hero1.jpg"); }
+.slide-2 { background-image: url("../img/hero2.jpg"); }
+.slide-3 { background-image: url("../img/hero3.jpg"); }
+.slide-4 { background-image: url("../img/hero4.jpg"); }
+
+.hero-content {
+  position: relative;
+  z-index: 1;                  /* le texte passe au-dessus des images */
+  padding: 1rem;
+  max-width: 700px;
+}
+
+.hero-content h1,
+.hero-content p {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);   /* contour sombre diffus derrière les lettres */
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  margin: 0 0 1rem;
+}
+
+/* ========== APPARITION DES CARTES (js/apparition.js) ========== */
+/* État de départ : carte invisible et légèrement décalée vers le bas */
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+/* Quand le JS ajoute la classe "visible", la carte apparaît */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sans cette règle, l'effet de survol (cartes qui se soulèvent) serait écrasé par .card.visible */
+.card.visible:hover {
+  transform: translateY(-6px);
+}
+
+/* ========== ACCESSIBILITÉ ========== */
+/* Animations désactivées par l'utilisateur : pas de zoom ni de fondu */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+  .hero-slide.active {
+    transform: none;
+  }
+}
+
+/* ========== RESPONSIVE DE L'ACCUEIL ========== */
+/* Tablette et plus : titre de la bannière plus grand */
+@media (min-width: 600px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}

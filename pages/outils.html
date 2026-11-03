@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outils FitZone : calculateur d'IMC et de calories, chronomètre d'intervalles.">
+    <title>FitZone – Outils</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/outils.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/calculateur.js" defer></script>
+    <script src="../js/chrono.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="../index.html">FitZone</a>
+        <button type="button" class="nav-toggle" id="nav-toggle"aria-expanded="false" aria-controls="main-nav">
+            <span class="sr-only">Menu</span>☰
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <!-- aria-current="page" : Outils est la page active -->
+                <li><a href="outils.html" aria-current="page">Outils</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+            </ul>
+        </nav>
+  </header>
+
+  <main>
+    <h1>Nos outils</h1>
+    <p>Calcule tes besoins et chronomètre tes séances.</p>
+
+    <!-- Conteneur des deux outils : en colonne sur mobile, côte à côte sur ordinateur (voir outils.css) -->
+    <div class="outils-grid">
+
+      <!-- ===== OUTIL 1 : calculateur ===== -->
+      <section class="bloc-outil" aria-labelledby="titre-calcul">
+        <h2 id="titre-calcul">Calculateur IMC et calories</h2>
+
+        <!-- novalidate : on désactive la validation automatique du navigateur
+             pour afficher nos propres messages avec JavaScript -->
+        <form id="form-calcul" novalidate>
+
+          <div class="champ">
+            <!-- for="taille" relie le texte au champ : cliquer sur le texte active le champ -->
+            <label for="taille">Taille (cm)</label>
+            <input type="number" id="taille" name="taille" placeholder="ex : 175">
+          </div>
+
+          <div class="champ">
+            <label for="poids">Poids (kg)</label>
+            <input type="number" id="poids" name="poids" placeholder="ex : 70">
+          </div>
+
+          <div class="champ">
+            <label for="age">Âge (ans)</label>
+            <input type="number" id="age" name="age" placeholder="ex : 20">
+          </div>
+
+          <div class="champ">
+            <label for="sexe">Sexe (utilisé uniquement dans la formule)</label>
+            <select id="sexe" name="sexe">
+              <option value="">Choisir</option>
+              <option value="homme">Homme</option>
+              <option value="femme">Femme</option>
+            </select>
+          </div>
+
+          <div class="champ">
+            <label for="activite">Niveau d'activité</label>
+            <select id="activite" name="activite">
+              <option value="">Choisir</option>
+              <!-- La value est le coefficient multiplicateur utilisé dans le calcul -->
+              <option value="1.2">Sédentaire (peu ou pas de sport)</option>
+              <option value="1.375">Léger (1 à 3 séances par semaine)</option>
+              <option value="1.55">Modéré (3 à 5 séances par semaine)</option>
+              <option value="1.725">Intense (6 à 7 séances par semaine)</option>
+            </select>
+          </div>
+
+          <!-- type="submit" : déclenche l'événement "submit" du formulaire -->
+          <button type="submit" class="btn">Calculer</button>
+        </form>
+
+        <!-- Message d'erreur : caché au départ (hidden), role="alert" pour les lecteurs d'écran -->
+        <p id="calcul-erreur" class="message-erreur" role="alert" hidden></p>
+
+        <!-- Résultats : cachés tant qu'aucun calcul valide n'a été fait -->
+        <div id="calcul-resultat" class="resultat" hidden>
+          <p>IMC : <strong id="imc-valeur"></strong> (<span id="imc-categorie"></span>)</p>
+          <p>Besoin énergétique estimé : <strong id="calories-valeur"></strong> kcal par jour</p>
+          <p class="note">Valeurs indicatives, qui ne remplacent pas l'avis d'un professionnel de santé.</p>
+        </div>
+      </section>
+
+      <!-- ===== OUTIL 2 : chronomètre ===== -->
+      <section class="bloc-outil" aria-labelledby="titre-chrono">
+        <h2 id="titre-chrono">Chronomètre d'intervalles</h2>
+        <p>Alterne des phases d'effort et de repos.</p>
+
+        <div class="champ">
+          <label for="chrono-effort">Effort (secondes)</label>
+          <!-- value : valeur proposée par défaut -->
+          <input type="number" id="chrono-effort" value="30">
+        </div>
+
+        <div class="champ">
+          <label for="chrono-repos">Repos (secondes)</label>
+          <input type="number" id="chrono-repos" value="15">
+        </div>
+
+        <div class="champ">
+          <label for="chrono-series">Nombre de séries</label>
+          <input type="number" id="chrono-series" value="8">
+        </div>
+
+        <!-- Affichage : la classe "effort" ou "repos" est ajoutée par le JS pour changer la couleur -->
+        <div class="chrono-affichage" id="chrono-affichage">
+          <!-- aria-live="polite" : le lecteur d'écran annonce le changement de phase -->
+          <p class="chrono-phase" id="chrono-phase" aria-live="polite">Prêt</p>
+          <p class="chrono-temps" id="chrono-temps">0</p>
+          <p id="chrono-serie">Série 0 / 0</p>
+        </div>
+
+        <p id="chrono-erreur" class="message-erreur" role="alert" hidden></p>
+
+        <div class="boutons-chrono">
+          <!-- type="button" : ce bouton n'envoie aucun formulaire -->
+          <button type="button" class="btn" id="chrono-demarrer">Démarrer</button>
+          <button type="button" class="btn btn-secondaire" id="chrono-reinitialiser">Réinitialiser</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <footer>
+   
+    <p>© 2026 FitZone – Projet TI504N/TI504NB</p>
+  </footer>
+
+    
+</body>
+</html>
