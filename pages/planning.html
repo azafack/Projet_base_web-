@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le planning de la semaine FitZone : les jours d'entraînement de chaque programme.">
+    <title>FitZone - Planning</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/planning.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/planning.js" defer></script>
+</head>
+<body>
+    <header>
+        <a class="logo" href="../index.html">FitZone</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+            <span class="sr-only">Menu</span>☰
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="planning.html" aria-current="page">Planning</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Planning de la semaine</h1>
+        <p>Retrouve les jours d'entraînement de chaque programme. Clique sur le nom d'un programme pour voir ses exercices en vidéo.</p>
+
+        <p id="message-jour" class="message-jour" hidden></p>
+
+        <!-- div.table-scroll : sur mobile, le tableau défile horizontalement au lieu de déborder -->
+        <div class="table-scroll">
+            <table class="planning">
+                <caption>Séances de la semaine pour chaque programme</caption>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th scope="col">Lundi</th>
+                        <th scope="col">Mardi</th>
+                        <th scope="col">Mercredi</th>
+                        <th scope="col">Jeudi</th>
+                        <th scope="col">Vendredi</th>
+                        <th scope="col">Samedi</th>
+                        <th scope="col">Dimanche</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><a href="programme-detail.html#remise-en-forme">Remise en forme</a></th>
+                        <!-- Une séance : son type en gras, puis les exercices -->
+                        <td class="seance"><strong>Corps entier</strong> Squats, pompes sur les genoux</td>
+                        <!-- class="repos" : jour sans séance, affiché en plus discret -->
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Jambes et gainage</strong> Fentes avant, gainage</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Cardio léger</strong> Jumping jacks, pont fessier</td>
+                        <td class="repos">Repos</td>
+                        <td class="repos">Repos</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="programme-detail.html#cardio-decouverte">Cardio découverte</a></th>
+                        <td class="seance"><strong>Endurance</strong> Marche rapide 30 min, gainage</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Vélo</strong> Vélo 35 min</td>
+                        <td class="repos">Repos</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Cardio</strong> Montées de genoux, marche rapide 20 min</td>
+                        <td class="repos">Repos</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="programme-detail.html#perte-de-poids">Perte de poids</a></th>
+                        <td class="seance"><strong>Circuit</strong> Burpees, squats sautés</td>
+                        <td class="seance"><strong>Course</strong> Course à pied 30 min</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Renforcement</strong> Pompes, mountain climbers</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>HIIT</strong> 8 × (40 s effort / 20 s repos)</td>
+                        <td class="repos">Repos</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="programme-detail.html#prise-de-masse">Prise de masse</a></th>
+                        <td class="seance"><strong>Haut du corps</strong> Développé couché, rowing haltère</td>
+                        <td class="seance"><strong>Bas du corps</strong> Squat avec charge, soulevé de terre</td>
+                        <td class="repos">Repos</td>
+                        <td class="seance"><strong>Épaules</strong> Développé militaire</td>
+                        <td class="seance"><strong>Dos</strong> Tractions</td>
+                        <td class="repos">Repos</td>
+                        <td class="repos">Repos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Conseils pour bien utiliser le planning -->
+        <aside class="conseil" aria-label="Conseils">
+            <h2>Bien utiliser ton planning</h2>
+            <ul>
+                <li>Suis un seul programme à la fois, pendant au moins 4 semaines.</li>
+                <li>Les jours de repos font partie du programme : c'est là que les muscles récupèrent.</li>
+                <li>Tu peux décaler une séance d'un jour, mais garde au moins un jour de repos entre deux séances difficiles.</li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>© 2026 FitZone – Projet TI504N/TI504NB</p>
+    </footer>
+</body>
+</html>
