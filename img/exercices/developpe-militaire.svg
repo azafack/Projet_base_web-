@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160" role="img">
+  <title>Développé militaire</title>
+  <polyline points="15,150 185,150" fill="none" stroke="#3A3A3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="100,95 92,120 88,146" fill="none" stroke="#F5F5F5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="100,95 108,120 112,146" fill="none" stroke="#F5F5F5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="100,95 100,48" fill="none" stroke="#F5F5F5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="100,50 82,34 78,14" fill="none" stroke="#F5F5F5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="100,50 118,34 122,14" fill="none" stroke="#F5F5F5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,14 152,14" fill="none" stroke="#FF6B1A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="40" y="2" width="12" height="24" rx="3" fill="#FF6B1A"/>
+  <rect x="148" y="2" width="12" height="24" rx="3" fill="#FF6B1A"/>
+  <circle cx="100" cy="31" r="12" fill="#F5F5F5"/>
+</svg>
