@@ -16,6 +16,11 @@ try {
     programmes.forEach((programme) => {
       // hidden = true cache la section, false l'affiche
       programme.hidden = (programme !== aAfficher);
+
+      // Si on cache un programme, on met ses vidéos en pause (sinon elles continueraient en arrière-plan)
+      if (programme.hidden) {
+        programme.querySelectorAll("video").forEach((video) => video.pause());
+      }
     });
 
     // Dans le sommaire, on marque le lien du programme affiché comme "actif"
