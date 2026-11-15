@@ -1,14 +1,11 @@
-/* Tablette (à partir de 600 px) : cartes sur 2 colonnes */
+
 @media (min-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero-content h1 {
-    font-size: 3rem;
-  }
 }
 
-/* Ordinateur (à partir de 900 px) : menu horizontal, 3 colonnes */
+
 @media (min-width: 900px) {
   /* On cache le burger */
   .nav-toggle {

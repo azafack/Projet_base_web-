@@ -1,5 +1,6 @@
+
 :root{
-    background: #121212;
+    --bg: #121212;          /* fond principal */
     --card: #1e1e1e;
     --accent: #ff6b1a;
     --accent-2:#FFC247;
@@ -9,15 +10,11 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     --font-titre: "Oswald", Impact, "Arial Narrow", sans-serif;
     --font-texte: "Roboto", "Segoe UI", Arial, sans-serif;
-    --voile-haut: rgba(0, 0, 0, 0.20);      /* opacité en haut de la bannière */
-    --voile-bas: rgba(18, 18, 18, 0.45);    /* opacité en bas */
 }
-/* ========== BASE ==========
-   box-sizing: border-box : la largeur inclut padding et bordure (calculs plus simples). */
 *, *::before, *::after {
   box-sizing: border-box;
 }
-/* margin: 0 enlève les marges par défaut du navigateur */
+
 body {
   margin: 0;
   font-family: var(--font-texte);
@@ -107,67 +104,6 @@ footer ul {
   color: var(--accent);
 }
 
-.hero {
-  position: relative;          /* obligatoire : les images se placent par rapport à la bannière */
-  min-height: 80vh;            /* hauteur de la bannière */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1E1E1E, #3a1a05);
-}
-
-.hero-slides {
-  position: absolute;          /* occupe toute la bannière */
-  inset: 0;
-}
-
-.hero-slides::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(var(--voile-haut), var(--voile-bas));
-}
-
-.hero-slide {
-  position: absolute;          /* sans cette ligne, les div ont une hauteur de 0 : rien ne s'affiche */
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transform: scale(1);
-  transition: opacity 1.5s ease-in-out, transform 7s ease-out;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  transform: scale(1.08);
-}
-
-.slide-1 { background-image: url("../img/hero1.jpg"); }
-.slide-2 { background-image: url("../img/hero2.jpg"); }
-.slide-3 { background-image: url("../img/hero3.jpg"); }
-.slide-4 { background-image: url("../img/hero4.jpg"); }
-
-.hero-content {
-  position: relative;
-  z-index: 1;                  /* le texte passe au-dessus des images */
-  padding: 1rem;
-  max-width: 700px;
-}
-
-.hero-content h1,
-.hero-content p {
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);   /* contour sombre diffus derrière les lettres */
-}
-
-.hero-content h1 {
-  font-size: 2.2rem;
-  margin: 0 0 1rem;
-}
-
 /* ========== BOUTON ========== */
 .btn {
   display: inline-block;
@@ -219,24 +155,16 @@ footer ul {
 }
 
 /* ========== ACCESSIBILITÉ ========== */
-/* Si l'utilisateur a désactivé les animations, on les coupe (zoom et transitions) */
+/* Si l'utilisateur a désactivé les animations, on coupe les transitions
+   (le zoom du diaporama est coupé dans accueil.css) */
 @media (prefers-reduced-motion: reduce) {
-  .hero-slide, .btn, .card {
+  .btn, .card {
     transition: none;
   }
-  .hero-slide.active {
-    transform: none;
-  }
-}
-/* État de départ : carte invisible et légèrement décalée vers le bas */
-.card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s, transform 0.6s;
 }
 
-/* Quand le JS ajoute la classe "visible", la carte apparaît */
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Sans cette règle, display: flex/grid pourrait ignorer l'attribut hidden
+   (utilisé par les filtres de la page Programmes) */
+[hidden] {
+  display: none !important;
 }
